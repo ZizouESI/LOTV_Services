@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_USER: lotva
+      POSTGRES_MULTIPLE_DATABASES: auth,resources
+    ports:
+      - "5432:5432"
+
+  auth:
+    build:
+      dockerfile: Dockerfile
+      context: ./auth
+    container_name: "auth-app"
+    ports: 
+      - "8001:8001"
+    restart: always
+    depends_on:
+      - db
+      
+  resources:
+    build:
+      dockerfile: Dockerfile
+      context: ./resources
+    container_name: "resources-app"
+    ports: 
+      - "8002:8002"
+    restart: always
+    depends_on:
+      - db
+
+  gateway:
+    build:
+      dockerfile: Dockerfile
+      context: ./gateway
+    container_name: "api-gateway"
+    ports: 
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - auth
+      - resources
+      
+      
+
