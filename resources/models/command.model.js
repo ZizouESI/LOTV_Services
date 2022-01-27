@@ -6,7 +6,9 @@ module.exports = (sequelize, Sequelize) => {
       prix : {
         type : Sequelize.INTEGER
       },
-      
+      userId: {
+      	type: Sequelize.INTEGER
+      }
     });
     
     return Command;
