@@ -48,7 +48,7 @@ _N.B : Quelques attributs évoluent au fil du temps (avancement du projet)_
 
 #### Diagramme de cas d'utilisations (Use Cases)
 Le diagramme suivant résume tous les cas d'utilisation décrits dans la partie de spécification des besoins   
-![Uses Cases]()
+![Uses Cases](./images/Use_Cases.png)
 
 ## Installation et exécution
 - Après récupération du projet dans un dépôt local et en se positionnant dans la racine de l'application `lotv_services/ ` 
