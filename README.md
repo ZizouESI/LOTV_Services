@@ -46,7 +46,7 @@ _N.B : Quelques attributs évoluent au fil du temps (avancement du projet)_
 - Le système devra être implémenté en NodeJs (Express JS) côté serveur 
 - Le système devra utiliser PostgreSQL comme SGBD
 
-#### Diagramme de cas d'utilisations (Use Cases)
+### Partie  02 : Diagramme de cas d'utilisations (Use Cases)  
 Le diagramme suivant résume tous les cas d'utilisation décrits dans la partie de spécification des besoins   
 ![Uses Cases](./images/Use_Cases.png)
 
@@ -68,7 +68,7 @@ _**N.B : Si la section installation et exécution est aussi petite que ca , c'es
 	 - Une API-Resources (Express Js)
 - Un frontend (React JS)
 L'image suivante résume très bien cette architecture:
-![Architecture Microservices]()
+![Architecture Microservices](./images/ARCHI_MS_LOTV.png)
  
 #### En ce qui concerne le bases de données 
 
