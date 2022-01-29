@@ -67,7 +67,7 @@ _**N.B : Si la section installation et exécution est aussi petite que ca , c'es
 	 - Une API-Auth (Express Js)
 	 - Une API-Resources (Express Js)
 - Un frontend (React JS)
-L'image suivante résume très bien cette architecture:
+L'image suivante résume très bien cette architecture:  
 ![Architecture Microservices](./images/ARCHI_MS_LOTV.png)
  
 #### En ce qui concerne le bases de données 
