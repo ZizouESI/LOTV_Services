@@ -66,8 +66,9 @@ _**N.B : Si la section installation et exécution est aussi petite que ca , c'es
 	 - Une  API-Gateway (Express Js)
 	 - Une API-Auth (Express Js)
 	 - Une API-Resources (Express Js)
-- Un frontend (React JS)
+- Un frontend (React JS)  
 L'image suivante résume très bien cette architecture:  
+  
 ![Architecture Microservices](./images/ARCHI_MS_LOTV.png)
  
 #### En ce qui concerne le bases de données 
@@ -154,4 +155,8 @@ lotv_services/auth/
 - **package\*** : Les fichiers des packages `npm` (package manager)  
 
 
-Un service se lance  par l'exécution du fichier `app.js` qui lui est associé (exemple : auth-app.js )  avec `node.js` , ce dernier comporte essentiellement l'importation ( _`requires`_ ) des modules indispensable pour le fonctionnement du serveur et lancement de création de la base de données avec l'ORM `sequelize` (création des entités qui vont manipuler la persistance dans la base de données  et initialisation de tables , comme l'ajout des utilisateurs par défaut -un utilisateur simple et un modérateur - et l'ajout des fleurs et bouquets)  , il comporte aussi la déclaration des routes .
+Un service se lance  par l'exécution du fichier `app.js` qui lui est associé (exemple : auth-app.js )  avec `node.js` , ce dernier comporte essentiellement l'importation ( _`requires`_ ) des modules indispensable pour le fonctionnement du serveur et lancement de création de la base de données avec l'ORM `sequelize` (création des entités qui vont manipuler la persistance dans la base de données  et initialisation de tables , comme l'ajout des utilisateurs par défaut -un utilisateur simple et un modérateur - et l'ajout des fleurs et bouquets)  , il comporte aussi la déclaration des routes .  
+
+### Architecture de déploiement  
+
+![Architecture de déploiment](./images/ARCHI_D_LOTV.png)  
