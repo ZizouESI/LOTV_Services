@@ -53,7 +53,7 @@ services:
     depends_on:
       - auth
       - resources
-      - front
+      
   
 
     

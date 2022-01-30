@@ -24,6 +24,8 @@ verifyToken = (req, res, next) => {
     next();
   });
 };
+
+
 //si le token est correcte (autorisé) , on vérifie si l'utilisateur est un admin
 isAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {

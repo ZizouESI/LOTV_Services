@@ -38,7 +38,7 @@ module.exports = function(app) {
 
   app.get(
     "/mod/:id",
-    [resourcesJWT.verifyToken, resourcesJWT.isModerator],
+    [resourcesJWT.verifyToken],
     controller.moderatorBoard
   );
 

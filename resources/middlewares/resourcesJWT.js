@@ -33,6 +33,25 @@ isAdmin = (req, res, next) => {
 //on verifie si l'utilisateur est un moderateur
 isModerator = (req, res, next) => {
   
+  //perform axios request to auth service 
+  axios.post("http://gateway:8000/auth/isModerator",{
+    userId:req.params.id,
+  })
+  .then( response => {
+      if(response.data.message == 'OK'){
+        next();
+      }else{
+        return res.status(401).send({
+          message: "Non autorisé!"
+        });
+      }
+      
+  })
+  .catch(err => {
+    res.status(err.response.status).send({
+      message: "Acces Non autorisé!"
+    });
+  });
 };
 //on vérifie si l'utilisateur est un moderateur ou admin
 isModeratorOrAdmin = (req, res, next) => {

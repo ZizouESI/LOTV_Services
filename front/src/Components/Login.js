@@ -16,7 +16,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("heeeloo")
-        axios.post("http://gateway:8000/auth/signin", 
+        axios.post("http://localhost:8000/auth/signin", 
         
             {
                 "username": username,

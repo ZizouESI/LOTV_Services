@@ -17,7 +17,7 @@ const UserBoard = () => {
     useEffect(()=>{
       
     
-        axios.get("http://gateway:8000/resources/user/"+localStorage.getItem("userId"), 
+        axios.get("http://localhost:8000/resources/user/"+localStorage.getItem("userId"), 
             {
                 headers:{
                     "x-access-token": localStorage.getItem("actualUser")
@@ -162,11 +162,12 @@ const UserBoard = () => {
 
             description += "]"
 
-            axios.post("http://gateway:8000/resources/command/"+localStorage.getItem("userId"), 
+            axios.post("http://localhost:8000/resources/command/"+localStorage.getItem("userId"), 
             {
                 "description" : description ,
                 "prix" : prixTotal,
                 "uid" : localStorage.getItem("userId"),
+                "username" : localStorage.getItem("username"),
                 "prodids" : prodIds,
                 "prods" : comands_panier,
                 "gids": gids
@@ -196,7 +197,7 @@ const UserBoard = () => {
     }
 
     const handleClickGetComands     = ()=>{
-        axios.get("http://gateway:8000/resources/command/"+localStorage.getItem("userId"),
+        axios.get("http://localhost:8000/resources/command/"+localStorage.getItem("userId"),
             {
                     headers:{
                         "x-access-token": localStorage.getItem("actualUser")

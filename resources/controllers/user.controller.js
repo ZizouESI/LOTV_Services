@@ -47,7 +47,8 @@ exports.createCommand = (req, res) => {
     Command.create({
         description: req.body.description,
         prix: req.body.prix,
-        userId: req.body.uid
+        userId: req.body.uid,
+        username: req.body.username
     }).then(command => {
         //console.log(req.body.prodids);
         if (req.body.prodids) {
@@ -123,9 +124,9 @@ exports.moderatorBoard = async (req, res) => {
     var fqty=[];
     
     await Command.findAll({
-        include: [Product, 'user']
+        include: Product
     }).then( async cmds => {
-    
+        console.log(cmds);
         for (var c = 0; c < cmds.length; c++) {
             for (var l = 0; l < cmds[c].products.length; l++) {
 
@@ -137,7 +138,7 @@ exports.moderatorBoard = async (req, res) => {
                         where: {
                             id: cmds[c].products[l].id,
                         },
-                        include: [Fleur]
+                        include: Fleur
                     });
 
                         
@@ -150,9 +151,8 @@ exports.moderatorBoard = async (req, res) => {
                     }
                     //console.log(prod.fleurs);
                     
-                    
                     commands.push({
-                        username: cmds[c].user.username,
+                        username: cmds[c].username,
                         description: cmds[c].description,
                         command_product_id: cmds[c].products[l].id,
                         images:li.slice(),
@@ -162,7 +162,7 @@ exports.moderatorBoard = async (req, res) => {
             };
         };
     });
-    
+    //console.log(commands);
     
     res.status(200).send({"commands":commands});
 };

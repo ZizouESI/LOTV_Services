@@ -20,7 +20,7 @@ const Signup = () => {
         
 
         console.log("heeeloo")
-        axios.post("http://gateway:8000/auth/signup", 
+        axios.post("http://localhost:8000/auth/signup", 
         
             {
                 "username": username,
