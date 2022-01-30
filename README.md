@@ -88,8 +88,8 @@ Quand le service `front` demande une ressources auprès du service `resources` c
  ...
  ```
 Bien évidemment il est possible de modifier ça , d'une façon à ce qu'il puisse s'exécuter une seule fois , mais pour tester toutes les fonctionnalités implémentées ça semble être bien de laisser le code tel qu'il est  
-Pour le peuplement de la base de données de chaque service elle se fait comme annoncé dans la fonction `initailiserdb();` , pour le service d'authentification `auth` on crée les trois rôles la dedans "ADMIN" , "MODERATOR" et "USER" et pour le service `resources` les fleurs disponibles (ici on crée quelques fleurs mais on peut créer autant qu'on veuille) de même pour les bouquets qui sont représentés par l'entité product . par contre les utilisateurs simple on peut les créer dynamiquement en utilisant l'interface graphique (browser) sur la route `http://localhost:3000/register` 
-Les produits (bouquets) aussi peuvent être crées d'une manière dynamique bien entendu , mais cette fonctionnalité n'est pas exprimée dans l'analyse des besoins (c.f expression des besoins)
+Pour le peuplement de la base de données de chaque service elle se fait comme annoncé dans la fonction `initailiserdb();` , pour le service d'authentification `auth` on crée les trois rôles la dedans "ADMIN" , "MODERATOR" et "USER" et pour le service `resources` les fleurs disponibles (ici on crée quelques fleurs mais on peut créer autant qu'on veuille) de même pour les bouquets qui sont représentés par l'entité product . par contre les utilisateurs simple on peut les créer dynamiquement en utilisant l'interface graphique (browser) sur la route `http://localhost:3000/register`   
+Les produits (bouquets) aussi peuvent être crées d'une manière dynamique bien entendu , mais cette fonctionnalité n'est pas exprimée dans l'analyse des besoins (c.f expression des besoins)  
 `N.B : Les images de peuplement de la base de données et les textes (nom bouquets , descriptions ... ) on les a pris du site https://www.flower.fr/ et quelques autres images sur freepik et pinterest `  
 
 ### Structuration du projet 
