@@ -89,7 +89,7 @@ module.exports = function(app) {
         }
   
         res.status(403).send({
-          message: "Exige un rôle d'administrateur!"
+          message: "Exige un rôle de modérateur!"
         });
         return;
       });

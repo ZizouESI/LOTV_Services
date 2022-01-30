@@ -163,10 +163,8 @@ exports.moderatorBoard = async (req, res) => {
         };
     });
     
-    global.commands = commands;
-    //console.log(commands);
-    //console.log(global);
-    res.status(200).render('moderatorboard', global);
+    
+    res.status(200).send({"commands":commands});
 };
 
 exports.validateCommand = (req, res) => {
