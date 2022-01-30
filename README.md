@@ -69,7 +69,12 @@ _**N.B : Si la section installation et exécution est aussi petite que ca , c'es
 - Un frontend (React JS)  
 L'image suivante résume très bien cette architecture:  
   
-![Architecture Microservices](./images/ARCHI_MS_LOTV.png)
+![Architecture Microservices](./images/ARCHI_MS_LOTV.png)  
+
+ #### En ce qui concerne la communication entre les services 
+Comme vous pouvez le voir sur l'architecture micro services ci-dessus , la communication entre les deux services `auth` et `resources` se fait par l'intermédiaire de `Message Broker Simulation` qui est une implémentation basique d'un message broker en utilisant des communication `HTTP` entre les services d'où la notation `Fire & Forget` (on a adopté cette méthode pour simplifier l'architecture sur cet aspect de communication entre micro services , après tout l'utilisation d'un Message Broker n'est pas difficile mais ajoute une couche supplémentaire à la solution et ce n'est pas le premier but du projet , on pourra citer par exemple RabbitMQ) . L' inconvénient bien évidemment de notre solution c'est que , si un service tombe en panne (Down) y'aura pas de sauvegarde de requêtes entre services chose qui se fait normalement avec un Message Broker.   
+- exemple de communication :   
+Quand le service `front` demande une ressources auprès du service `resources` celui-ci envoie dans l'entête de la requête HTTP un token JWT , mais le responsable de vérification des tokens et de l'authentification en générale c'est bien le service `auth` , dans ce cas le service `resources` sollicite le service `auth` et lui demande de vérifier si le JWT est correct , dans ce cas le service `auth` vérifie le JWT et lui renvoie la réponse.    
  
 #### En ce qui concerne le bases de données 
 
@@ -155,8 +160,8 @@ lotv_services/auth/
 - **package\*** : Les fichiers des packages `npm` (package manager)  
 
 
-Un service se lance  par l'exécution du fichier `app.js` qui lui est associé (exemple : auth-app.js )  avec `node.js` , ce dernier comporte essentiellement l'importation ( _`requires`_ ) des modules indispensable pour le fonctionnement du serveur et lancement de création de la base de données avec l'ORM `sequelize` (création des entités qui vont manipuler la persistance dans la base de données  et initialisation de tables , comme l'ajout des utilisateurs par défaut -un utilisateur simple et un modérateur - et l'ajout des fleurs et bouquets)  , il comporte aussi la déclaration des routes .  
+Un service se lance  par l'exécution du fichier `app.js` qui lui est associé (exemple : auth-app.js )  avec `node.js` , ce dernier comporte essentiellement l'importation ( _`requires`_ ) des modules indispensable pour le fonctionnement du serveur et lancement de création de la base de données avec l'ORM `sequelize` (création des entités qui vont manipuler la persistance dans la base de données  et initialisation de tables , comme l'ajout des utilisateurs par défaut -un utilisateur simple et un modérateur - et l'ajout des fleurs et bouquets)  , il comporte aussi la déclaration des routes.  
 
 ### Architecture de déploiement  
 
-![Architecture de déploiment](./images/ARCHI_D_LOTV.png)  
+![Architecture de déploiment](./images/ARCHI_D_LOTV.png)   
