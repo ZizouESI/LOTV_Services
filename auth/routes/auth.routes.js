@@ -79,12 +79,15 @@ module.exports = function(app) {
 
   app.post("/isModerator",(req,res,next)=>{
     let userId = req.body.userId;
-    User.findByPk(req.userId).then(user => {
+    
+    User.findByPk(userId).then(user => {
       user.getRoles().then(roles => {
+        
         for (let i = 0; i < roles.length; i++) {
           if (roles[i].name === "moderator") {
-            next();
-            return;
+            return res.status(200).send({
+              message: "OK"
+            });
           }
         }
   
