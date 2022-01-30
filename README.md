@@ -157,7 +157,13 @@ lotv_services/auth/
 - **models**: Comporte la déclaration des entités qui définissent le schéma de la base de données de l'application .
 - **node_modules** : Les modules nodes 
 - **routes** : Un répértoire qui comportent les fichiers où on a défini les points de terminaison de (endpoints) ou routes du service
-- **package\*** : Les fichiers des packages `npm` (package manager)  
+- **package\*** : Les fichiers des packages `npm` (package manager)    
+
+![Architecture auth](./images/architecture_auth.png)  
+
+![Auth based JWT](./images/auth_based_jwt.png)  
+
+![SignUp SignIn Process](./images/process_signup_signin.png)  
 
 
 Un service se lance  par l'exécution du fichier `app.js` qui lui est associé (exemple : auth-app.js )  avec `node.js` , ce dernier comporte essentiellement l'importation ( _`requires`_ ) des modules indispensable pour le fonctionnement du serveur et lancement de création de la base de données avec l'ORM `sequelize` (création des entités qui vont manipuler la persistance dans la base de données  et initialisation de tables , comme l'ajout des utilisateurs par défaut -un utilisateur simple et un modérateur - et l'ajout des fleurs et bouquets)  , il comporte aussi la déclaration des routes.  
