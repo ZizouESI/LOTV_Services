@@ -160,9 +160,9 @@ lotv_services/auth/
 - **package\*** : Les fichiers des packages `npm` (package manager)    
 
     ![Architecture auth](./images/architecture_auth.png)  
-
+- Authentification en utilisant JWT  
     ![Auth based JWT](./images/auth_based_jwt.png)  
-
+- Processus de SignUp et SignIn  
     ![SignUp SignIn Process](./images/process_signup_signin.png)  
 
 
