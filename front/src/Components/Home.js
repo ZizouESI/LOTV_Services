@@ -43,7 +43,7 @@ const Home = () => {
 	          <div className="heading-section mt-5 mb-4">
 	          	<div className="pl-lg-5 ml-md-5">
 		          	<span className="subheading">A propos de nous</span>
-		            <h2 className="mb-4" ><b>LOTV un fleuriste à paris</b></h2>
+		            <h2 className="mb-4" ><b >LOTV un fleuriste à paris</b></h2>
 	            </div>
 	          </div>
 	          <div className="pl-lg-5 ml-md-5">

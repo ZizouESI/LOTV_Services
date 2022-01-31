@@ -10,7 +10,7 @@ const Navbar = () => {
             <nav  style={{height:"70px"}} className=" navbar  fixed-top navbar-expand-lg d-flex flex-column   shadow-lg p-4 mb-100 " id="ftco-navbar" >
             
                 <div className="container ">
-                <a className="navbar-brand" href="/" style={{color:"black"}}> <b>Lily Of the Valley</b> </a>
+                <a className="navbar-brand" href="/" style={{color:"black"}}> <b style={{color:"black"}}>Lily Of the Valley</b> </a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="oi oi-menu"></span> Menu
                 </button>

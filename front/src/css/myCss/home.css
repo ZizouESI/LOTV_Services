@@ -6,7 +6,7 @@ nav{
     background: transparent;
     transition: 0.9s;
 }
-b {
+nav b {
     color: #b5b5b5;
     transition: 0.5s;
 }
@@ -21,7 +21,7 @@ nav:hover{
 nav:hover b{
     color:black
 }
-a b:hover{
+nav a b:hover{
     color: red;
 }
 
