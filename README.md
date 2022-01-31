@@ -170,4 +170,10 @@ Un service se lance  par l'exécution du fichier `app.js` qui lui est associé (
 
 ### Architecture de déploiement  
 
+#### Docker   
+
 ![Architecture de déploiment](./images/ARCHI_D_LOTV.png)   
+
+#### Kubernetes  
+
+Pour chaque service un fichier de déploiment et un fichier service à été créé , veuillez trouvez ces fichiers YAML dans le répértoire `K8s_deployments`   
