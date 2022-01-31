@@ -176,4 +176,4 @@ Un service se lance  par l'exécution du fichier `app.js` qui lui est associé (
 
 #### Kubernetes  
 
-Pour chaque service un fichier de déploiment et un fichier service à été créé , veuillez trouvez ces fichiers YAML dans le répértoire `K8s_deployments`   
+Pour chaque service un fichier de déploiment et un fichier service ont été créés , veuillez trouver ces fichiers YAML dans le répértoire `K8s_deployments`   
