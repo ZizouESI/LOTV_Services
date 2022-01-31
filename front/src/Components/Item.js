@@ -1,5 +1,5 @@
 const Item = (props) => {
-    const product           = props.product
+    const product     = props.product
     const handleAddTo = props.handleAddTo
     return ( 
         
@@ -20,8 +20,7 @@ const Item = (props) => {
                     </div>
                   </div>
 
-                  <h3 className="heading" data-id="<%=products[i].id%>" data-name="<%=products[i].nom%>"
-                    data-image="images/<%=products[i].image%>" data-prix="<%=products[i].prix%>">
+                  <h3 className="heading" >
                     <a href="#">
                       {product.nom}
                     </a>

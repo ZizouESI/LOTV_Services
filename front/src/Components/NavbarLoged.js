@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom'
+import '../css/myCss/home.css'
 
 const NavbarLoged = (props) => {
     let history = useHistory();
@@ -17,7 +18,7 @@ const NavbarLoged = (props) => {
     }
     return (  
         <div className="shadow-lg shadow-inset">
-            <nav className="navbar fixed-top navbar-expand-lg  ftco_navbar ftco-navbar-light shadow-lg p-4 mb-10" id="ftco-navbar">
+            <nav  style={{height:"70px"}} className="navbar  fixed-top navbar-expand-lg d-flex flex-column   shadow-lg p-4 mb-100" id="ftco-navbar">
                 <div className="container">
                 <a className="navbar-brand" href="/">
                     <b>Lily Of the Valley</b>
@@ -29,9 +30,9 @@ const NavbarLoged = (props) => {
 
                 <div className="collapse navbar-collapse" id="ftco-nav">
                     <ul className="navbar-nav ml-auto">
-                    <li className="nav-item"><span className="nav-link" id="helloUser">{localStorage.getItem("username")}</span></li>
-                    <li className="nav-item" onClick={(e) => {handleClickShow(setDisplay_comands);handleClickGetComands()}} ><span className="nav-link" id="mesCmds"    >Mes commandes</span></li>
-                    <li className="nav-item" onClick={handleLogout}><a href="/" className="nav-link" >Logout</a></li>
+                    <li className="nav-item"><span className="nav-link" id="helloUser"><a><b>{localStorage.getItem("username")}</b></a></span></li>
+                    <li className="nav-item" onClick={(e) => {handleClickShow(setDisplay_comands);handleClickGetComands()}} ><span className="nav-link" id="mesCmds"    ><a><b>Mes commandes</b></a></span></li>
+                    <li className="nav-item" onClick={handleLogout}><a href="/" className="nav-link" ><b>Logout</b></a></li>
                     <li className="nav-item " onClick={(e) =>handleClickShow(setDisplay_panier)}><span className="nav-link "><span className="icon-shopping-cart shopping-cart">
                         <span className="notification"> {nbItems}</span></span></span></li>
 

@@ -1,3 +1,30 @@
 #ftco-navbar{
-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+nav{
+    background: transparent;
+    transition: 0.9s;
+}
+b {
+    color: #b5b5b5;
+    transition: 0.5s;
+}
+nav span{
+    color: #b5b5b5;
+    transition: 0.5s;
+}
+nav:hover{
+        background: white;
+        color: black;
+}
+nav:hover b{
+    color:black
+}
+a b:hover{
+    color: red;
+}
+
+nav:hover span{
+    color: black;
 }

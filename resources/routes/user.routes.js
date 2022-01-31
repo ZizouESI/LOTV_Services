@@ -18,7 +18,7 @@ module.exports = function(app) {
   );
 
   app.post(
-    "/command/validate",
+    "/command/validate/:id",
     [resourcesJWT.verifyToken, resourcesJWT.isModerator],
     controller.validateCommand
   )

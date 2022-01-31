@@ -15,25 +15,34 @@ const UserBoard = () => {
     let history = useHistory();
 
     useEffect(()=>{
-      
-    
-        axios.get("http://localhost:8000/resources/user/"+localStorage.getItem("userId"), 
-            {
-                headers:{
-                    "x-access-token": localStorage.getItem("actualUser")
-                }
+        const role=localStorage.getItem("roles")
+        if(role!=null){
+            if( role.includes("ROLE_MODERATOR" )   ){
+
+                history.push("/Moderatorboard")
+
+            }else{
+
+                axios.get("http://localhost:8000/resources/user/"+localStorage.getItem("userId"), 
+                    {
+                        headers:{
+                            "x-access-token": localStorage.getItem("actualUser")
+                        }
+                    }
+                )      
+                .then((response) => {
+                    setProducts_origin (response.data.products)
+                    setFlowers_origin( response.data.flowers)
+                    setProducts(response.data.products)
+                })
+                .catch((error) => {
+                    //redicrect to home page
+                    history.push('/')
+                })
             }
-        )      
-        .then((response) => {
-            console.log(response.data.products)
-            setProducts_origin (response.data.products)
-            setFlowers_origin( response.data.flowers)
-            setProducts(response.data.products)
-        })
-        .catch((error) => {
-            //redicrect to home page
+        }else{
             history.push('/')
-        })
+        }
     },[history]
     );
     const [products_origin  ,setProducts_origin] = useState([])
@@ -58,21 +67,31 @@ const UserBoard = () => {
     const [prixTotalCompo       ,setPrixTotalCompo]       = useState(0)
     const [nbItems              ,setNbItems]              = useState(0)
 
+    const [message              ,setMessage]              = useState("")
+    const [success              ,setSuccess]              = useState(false)
+
+
     const handleChangeCheckBox  = ()                => {
         let permutation_var = display_fleur
         setCheckBoxVariable(!checkBoxVariable)
         setDisplay_fleur(display_others)
         setDisplay_others(permutation_var)
     }
+
     const handleClickExit       = (setDisplay_var)  => {
         setDisplay_var("none")
+        setMessage("")
+        setSuccess(false)
     }
+
     const handleClickShow       = (setDisplay_var)  => {
         setDisplay_var("")
     }
+
     const handleChangeProduct   = (value)           => {
         setProducts(products_origin.filter(product => product.prix < value))
     }
+
     const handleAddToPanier     = (data)            => {
         const index = comands_panier.map(e=>{return e.id}).indexOf(data.id)
         if(index===-1){
@@ -100,6 +119,8 @@ const UserBoard = () => {
         setComands_panier( arr)
         setPrixTotal(prixTotal-itemPrix)
         setNbItems(nbItems-nb*1)
+        setMessage("")
+        setSuccess(false)
     }
 
     const handleAddToComposition= (data)           => {
@@ -126,6 +147,9 @@ const UserBoard = () => {
         arr.splice(index,1)
         setComands_composition(arr)
         setPrixTotalCompo(prixTotalCompo-itemPrix)
+
+        setSuccess(false)
+        setMessage("")
     }
 
     const handleAddCompoToPanier =    ()            =>  {
@@ -139,12 +163,13 @@ const UserBoard = () => {
             moreId = Array(e.nb).fill(e.id)
             gliof.push(moreId)
         });
-
+        
+        setSuccess(true)
+        setMessage("le bouquet personnalisé à été ajouté à votre panier")
         setComands_panier(comands_panier.concat({"id":0,"name":"Personalisé","description":description,"image":"perso.jpg","prix":prixTotalCompo,"gliof":gliof,"liof":liof,"nb":1,type: 1}))
         setPrixTotal(prixTotal+prixTotalCompo)
         setNbItems(nbItems+1)
-        setPrixTotalCompo(0)
-        setComands_composition([])
+        
     }
 
     const handleClickAcheter     = ()=>{
@@ -181,15 +206,11 @@ const UserBoard = () => {
             
             )      
             .then((response) => {
-                console.log(response.data.message)
-                console.log("succeess")
-                setComands_panier([])
-                setPrixTotal(0)
-                setNbItems(0)
+                setMessage(response.data.message)
+                setSuccess(true)
             })
             .catch((error) => {
-                console.log(error.response.data.message)
-                console.log("error")
+                console.log(error.response.data)
             })
         }else{
 
@@ -204,16 +225,13 @@ const UserBoard = () => {
                     },
             })      
             .then((response) => {
-                console.log(response.data)
-                console.log("succeess")
                 setMyComands(response.data)
                 
             })
             .catch((error) => {
                 //redicrect to home page
-                //history.push('/')
+                history.push('/')
                 console.log(error.response.data.message)
-                console.log("error")
             })
     }
  
@@ -247,7 +265,7 @@ const UserBoard = () => {
                         </div>
                         <div className="row justify-content-center mb-5 pb-2">
                             <div className="col-md-7 text-center heading-section ">
-                                <span className="subheading ppcsub">prédéfinis</span>
+                                <span className="subheading ppcsub">{checkBoxVariable ? "personnalisé": "prédéfinis" }</span>
                                 <form id="ppc">
                                     <label className="switch">
                                         <input type="checkbox"  onChange={handleChangeCheckBox} />
@@ -292,10 +310,10 @@ const UserBoard = () => {
                 </div>
             </section>
             <div style={{display: display_panier}}>
-                <Panier handleDeleteItem={handleDeleteItem} handleClickExit={handleClickExit} setDisplay_panier = {setDisplay_panier} comands_panier = {comands_panier} handleClickAcheter={handleClickAcheter} prixTotal={prixTotal}/>
+                <Panier message={message} success={success} handleDeleteItem={handleDeleteItem} handleClickExit={handleClickExit} setDisplay_panier = {setDisplay_panier} comands_panier = {comands_panier} handleClickAcheter={handleClickAcheter} prixTotal={prixTotal}/>
             </div>
             <div style={{display: display_composition}}>
-                <Composition handleAddCompoToPanier ={handleAddCompoToPanier} handleDeleteItemCompo ={handleDeleteItemCompo} handleClickExit={handleClickExit} setDisplay_composition = {setDisplay_composition} comands_composition = {comands_composition} prixTotalCompo={prixTotalCompo}/>
+                <Composition message={message} success={success} handleAddCompoToPanier ={handleAddCompoToPanier} handleDeleteItemCompo ={handleDeleteItemCompo} handleClickExit={handleClickExit} setDisplay_composition = {setDisplay_composition} comands_composition = {comands_composition} prixTotalCompo={prixTotalCompo}/>
             </div>
             <div style={{display: display_comands}}>
                 <Comands  handleClickExit={handleClickExit} setDisplay_comands = {setDisplay_comands} myComands = {myComands}/>

@@ -7,8 +7,8 @@ const Panier = (props) => {
     const handleClickAcheter= props.handleClickAcheter
     const prixTotal         = props.prixTotal
     const handleDeleteItem  = props.handleDeleteItem
-   
-    
+    const success           = props.success
+    const message           = props.message
     
     return ( 
         <div className="modal " id="my-cart-modal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" style={{display: "block"}}>
@@ -60,6 +60,7 @@ const Panier = (props) => {
                                 
                             </table>
                             }
+                            {success &&<div style={{marginTop: "10px"}} className="alert alert-success" role="alert">{message}</div>}
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-default close-panier" data-dismiss="modal" onClick={(e) =>handleClickExit(setDisplay_panier)}>Fermer</button>

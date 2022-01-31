@@ -17,9 +17,7 @@ const Signup = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        
 
-        console.log("heeeloo")
         axios.post("http://localhost:8000/auth/signup", 
         
             {

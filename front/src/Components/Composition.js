@@ -7,6 +7,9 @@ const Composition = (props) => {
     const prixTotalCompo            = props.prixTotalCompo
     const handleDeleteItemCompo     = props.handleDeleteItemCompo
     const handleAddCompoToPanier    = props.handleAddCompoToPanier
+    const success                   = props.success
+    const message                   = props.message
+
 
     return ( 
         <div className="modal  in" id="my-cart-modal-perso" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -56,6 +59,7 @@ const Composition = (props) => {
                    
                 </table>
                 }
+                {success &&<div style={{marginTop: "10px"}} className="alert alert-success" role="alert">{message}</div>}
                 </div>
                 <div className="modal-footer">
                     <button type="button" className="btn btn-default close-panier-perso" data-dismiss="modal" onClick={(e) =>handleClickExit(setDisplay_composition)}>Fermer</button>

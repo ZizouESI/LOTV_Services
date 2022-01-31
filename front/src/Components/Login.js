@@ -15,7 +15,6 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("heeeloo")
         axios.post("http://localhost:8000/auth/signin", 
         
             {
@@ -24,10 +23,16 @@ const Login = () => {
             }
         )      
         .then((response) => {
+            const roles = response.data.roles
             localStorage.setItem('userId', response.data.id);
             localStorage.setItem('username', response.data.username);
             localStorage.setItem('actualUser', response.data.accessToken);
-            history.push("/userboard")
+            localStorage.setItem('roles',response.data.roles);
+            if(  roles.some(v => v==="ROLE_MODERATOR") ){
+                history.push("/moderatorBoard")
+            }else{
+                history.push("/userboard")
+            }
         })
         .catch((error) => {
             setDisplay_error("")
@@ -102,12 +107,9 @@ const Login = () => {
                         <div className="form-group">
                             <p><a href="/register" className="btn btn-primary py-3 px-5" onClick={handleClickCreate}>Créer un compte</a></p>
                         </div>
-                        </div>  
-                         
-                        <div style={{marginTop: '200px'}}></div>
-                        
-                    </div>
-                    
+                        </div>                  
+                        <div style={{marginTop: '200px'}}></div>                     
+                    </div>         
                     </form>
                 </div>
                 </div>
